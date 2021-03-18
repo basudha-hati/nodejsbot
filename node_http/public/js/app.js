@@ -12,23 +12,25 @@ document.addEventListener("DOMContentLoaded",
 
 			//Specify AWS credentials
 			AWS.config.update({
-				accessKeyId: "*****access key id*****",
-				secretAccessKey: "****secret Access Key****",
+				accessKeyId: "****",
+				secretAccessKey: "***",
 				region:'us-east-1' //choose a region
 			});
 
 
 			var lexruntime = new AWS.LexRuntime();
 			var getInput = document.getElementById("txtInput").value;
+			document.getElementById("content").innerHTML += "User: "+ getInput + "<br>";
 
 			//Create parameters for Lex
 			var params = {
-				botAlias: '***Alias bot name****', /* required */
-				botName: '****botName***', /* required --example OrderFlowers*/
+				botAlias: 'OrderFlowers', /* required */
+				botName: 'OrderFlowers', /* required --example OrderFlowers*/
 				inputText: getInput, /* required */
-				userId: '*** username ****', /* required */
+				userId: 'Administrator', /* required */
 				sessionAttributes: {}
 			};
+
 
 			//Post Text to Lex
 			lexruntime.postText(params, function(err, data) {
@@ -37,7 +39,8 @@ document.addEventListener("DOMContentLoaded",
 				}
 				else {
 					console.log(data); // successful response
-					document.getElementById("content").innerHTML += data.message + "<br>";
+					document.getElementById("content").innerHTML += "Bot: "+  data.message + "<br>";
+					document.getElementById("content").innerHTML += " " +"<br>";
 				} ;
 			});
 
