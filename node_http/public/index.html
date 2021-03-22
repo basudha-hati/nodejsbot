@@ -14,6 +14,7 @@
     <!-- Bootstrap core CSS -->
     <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
 
+
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!--<link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> by rajat-->
 
@@ -32,7 +33,7 @@
 
   </head>
 
-  <body>
+  <body background ="./images/backgroundUI.png">
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -48,6 +49,7 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href="covid_info1">Covid Information</a></li>
             <!--<li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>-->
           </ul>
@@ -55,7 +57,7 @@
       </div>
     </nav>
 
-    <div class="container">
+    <div class="container" ;>
 
       <div class="starter-template">
 
@@ -64,22 +66,39 @@
       </div>
 
        <div class="panel panel-default">
+
             <div class="panel-heading">
-              <h3 class="panel-title">Start Conversation</h3>
+<!--              <h3 class="panel-title">Start Conversation</h3>-->
             </div>
             <div class="panel-body">
-                 <input type="text" id="txtInput" class="form-control" placeholder="I would like to pick up flowers"><br>
-                 <button type="submit" class="btn btn-lg btn-primary btn-block"  id="startChat">Chat</button>
-            </div>
+              <link class="panel-body" href="./dist/css/sample.css" rel="stylesheet">
+              <div id="content" class="panel-body"> </div>
 
-             <div id="content" class="panel-body">
+              <div class="chat-input">
+                <form action="#0" id="user-input-form">
+                 <input type="text" id="txtInput" class="form-control" placeholder="Ask me anything about Covid-19" style="text-align:left;"><br>
+                 <button type="submit" class="btn btn-lg btn-primary btn-block"  id="startChat">Chat</button>
+                  </form>
+
+              </div>
+
+
+<!--             <div type="text" id="user-input" class="blue-box">-->
+<!--               <span type="text" id="content" class="form-control" placeholder="user reply" text-align ="right"></span>-->
+<!--               <span type="text" id="txtInput" class="form-control" placeholder="bot reply" text-align ="right"></span>-->
+
+
              </div>
-      </div>
-     
-      
-      
+
+<!--         <textarea readonly="true" id="botChat" style="text-align:left; position:fixed; display:block; top:3vh; border:1px solid black; width:92.5vw; margin-left:1%; margin-right:2.25%; height:75vh; resize:none; font-family:Courier; overflow-y:auto; user-select:none; font-size:3vw;"></textarea>-->
+<!--         <p style="position:absolute; border:1px solid black; top:78vh; left:12.25vw; width:75vw;">-->
+<!--           <input type="text" placeholder="Ask a question" onKeypress="enterButton(event, document.getElementsByTagName('input')[0].value);" style="color:red; background-color:black; width:79%;">-->
+<!--           <button onClick="answer(document.getElementsByTagName('input')[0].value)">Talk To Me</button></p>-->
+
+
 
     </div><!-- /.container -->
+
 
 
     <!-- Bootstrap core JavaScript
@@ -92,5 +111,8 @@
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.59.0.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> by rajat-->
+    </div>
+    
+    
   </body>
 </html>

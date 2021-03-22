@@ -1,8 +1,3 @@
-
-// const request= require('request').defaults({
-//     strictSSL: false,
-//     rejectUnauthorized: false
-// });
  function fetchData(){
     fetch("https://corona.lmao.ninja/v2/continents?yesterday=true&sort").then(response=>{
         return response.json();
@@ -22,11 +17,3 @@
 }
 
 fetchData();
-
-//     request.get("https://api.covidtracking.com/v1/us/daily.json",(error,response,body)=>{
-//         if (error)
-//             return console.dir(error);
-//         else
-//
-//             console.dir(JSON.parse(body));
-//     });
