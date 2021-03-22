@@ -10,7 +10,10 @@
   "author": "Rajat Ratewal <rajatratewal@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^3.1.6",
     "express": "^4.15.3",
-    "morgan": "^1.8.2"
+    "morgan": "^1.8.2",
+    "node-fetch": "^2.6.1",
+    "request": "^2.88.2"
   }
 }
