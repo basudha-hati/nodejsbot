@@ -20,7 +20,7 @@ function fetchData(){
 
 }
 
-router.get('/covid_info1', function(req, res) {
+router.get('/covidinfo', function(req, res) {
   fetch("https://corona.lmao.ninja/v2/countries?today&sort").then(response=>{
     return response.json();
   }).then(data =>{
