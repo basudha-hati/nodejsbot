@@ -53,21 +53,31 @@
     </div>
 </nav>
 
-<h1>Welcome to Covid Info page</h1>
-<div id="app">
+<h1 class="container">Covid-19 Statistics</h1>
+<div id="app" class="container">
     <table>
         <tr>
             <th>Country</th>
             <th>Contact</th>
-            <th></th>
-            <th>Cases</th>
+            <th>Total Cases</th>
+            <th>Total Deaths</th>
+            <th>Recovered Cases</th>
+            <th>Active Cases</th>
+            <th>Total Tests</th>
+            <th>Today Cases </th>
+            <th>TodayDeaths </th>
         </tr>
         <% html.forEach(function(r) { %>
         <tr>
             <th><%= r.country %></th>
             <th><img src=<%= r.countryInfo.flag %> style="width:4em; height:3em;"></th>
-            <th></th>
+            <th><%= r.cases %></th>
+            <th><%= r.deaths %></th>
             <th><%= r.recovered %></th>
+            <th><%= r.active %></th>
+            <th><%= r.tests %></th>
+            <th><%= r.todayCases %></th>
+            <th><%= r.todayDeaths %></th>
 
         </tr>
 
