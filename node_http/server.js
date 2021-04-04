@@ -21,7 +21,8 @@ function fetchData(){
 }
 
 router.get('/covidinfo', function(req, res) {
-  fetch("https://corona.lmao.ninja/v2/countries?today&sort").then(response=>{
+  //fetch("https://corona.lmao.ninja/v2/countries?today&sort").then(response=>{
+  fetch("https://disease.sh/v3/covid-19/countries?yesterday=false&twoDaysAgo=false").then(response=>{
     return response.json();
   }).then(data =>{
     res.render('covid_info1', { html: data });

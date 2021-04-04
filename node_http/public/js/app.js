@@ -1,3 +1,11 @@
+function isJson(str) {
+	try {
+		JSON.parse(str);
+	} catch (e) {
+		return false;
+	}
+	return true;
+}
 document.addEventListener("DOMContentLoaded",
 	function (event)
 	{
@@ -11,8 +19,8 @@ document.addEventListener("DOMContentLoaded",
 
 			//Specify AWS credentials
 			AWS.config.update({
-				accessKeyId: "",
-				secretAccessKey: "",
+				accessKeyId: "*********",
+				secretAccessKey: "*************",
 				region:'us-east-1' //choose a region
 			});
 
@@ -23,11 +31,11 @@ document.addEventListener("DOMContentLoaded",
 			document.getElementById("content").innerHTML += " " +"<br>";
 			document.getElementById("content").innerHTML += " " +"<br>";
 			document.getElementById("content").innerHTML += " " +"<br>";
-
+			console.log("Here!!!!!!!!!!!!!!")
 
 			//Create parameters for Lex
 			var params = {
-				botAlias: 'ChatbotII', /* required */
+				botAlias: 'chatv', /* required */
 				botName: 'CovidChatbot', /* required --example OrderFlowers*/
 				inputText: getInput, /* required */
 				userId: 'Administrator', /* required */
@@ -40,15 +48,51 @@ document.addEventListener("DOMContentLoaded",
 					console.log(err, err.stack); // an error occurred
 				}
 				else {
+					console.log("hello!!!");
 					console.log(data); // successful response
-					// document.getElementById("content").innerHTML += "Bot: "+  data.message + "<br>";
-					document.getElementById("content").innerHTML
-					// document.getElementById("content").innerHTML +=  "<p  style=>"+ "<strong>Chatbot<\strong>" + "<br>";
-					document.getElementById("content").innerHTML += "<img src=\"./images/Chatbot.svg\" style=\"width:6%\">";
-					document.getElementById("content").innerHTML +=   "<span type='text' class =\"bubble\" contenteditable=\"true\" >" + data.message +"</span>"+"<br>";
-					document.getElementById("content").innerHTML += " " +"<br>";
-					document.getElementById("content").innerHTML += " " +"<br>";
-					document.getElementById("content").innerHTML += " " +"<br>";
+					if(isJson(data.message)){
+						const parsedJSON = JSON.parse(data.message);
+						const message = parsedJSON.messages;
+						console.log("ye dekho bhai 1 -- "+message);
+
+						document.getElementById("content").innerHTML+= " " +"<ul>";
+						for(var i = 0; i < message.length; i++) {
+
+							var obj = message[i];
+
+							// if(obj.type.valueOf() === "PlainText".valueOf()){
+
+								document.getElementById("content").innerHTML += "<img src=\"./images/Chatbot.svg\" style=\"width:6%\">";
+								if(obj.type.valueOf() === "PlainText".valueOf()){
+									document.getElementById("content").innerHTML +=   "<li type='text' class =\"bubble\" contenteditable=\"true\" >" + obj.value +"</li>"+"<br>";
+								}
+								if(obj.type.valueOf() === "HyperLink".valueOf()){
+									console.log("yay!!idhar bhi aa gyi")
+									document.getElementById("content").innerHTML +=   " <a class = \"bubble\" contenteditable=\"false\" target=\"blank\" href="+obj.value +">Click here</a> "+"<br>";
+								}
+
+								document.getElementById("content").innerHTML += " " +"<br>";
+								document.getElementById("content").innerHTML += " " +"<br>";
+								document.getElementById("content").innerHTML += " " +"<br>";
+							}
+						// }
+						document.getElementById("content").innerHTML+= " " +"</ul>";
+					}
+
+					else{
+						console.log("hello!!! other one");
+						// document.getElementById("content").innerHTML += "Bot: "+  data.message + "<br>";
+						document.getElementById("content").innerHTML
+						// document.getElementById("content").innerHTML +=  "<p  style=>"+ "<strong>Chatbot<\strong>" + "<br>";
+						document.getElementById("content").innerHTML += "<img src=\"./images/Chatbot.svg\" style=\"width:6%\">";
+						document.getElementById("content").innerHTML +=   "<span type='text' class =\"bubble\" contenteditable=\"true\" >" + data.message +"</span>"+"<br>";
+						document.getElementById("content").innerHTML += " " +"<br>";
+						document.getElementById("content").innerHTML += " " +"<br>";
+						document.getElementById("content").innerHTML += " " +"<br>";
+					}
+
+
+
 
 				} ;
 			});

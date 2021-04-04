@@ -66,6 +66,7 @@
             <th>Total Tests</th>
             <th>Today Cases </th>
             <th>TodayDeaths </th>
+            <th>Last Updated </th>
         </tr>
         <% html.forEach(function(r) { %>
         <tr>
@@ -78,6 +79,9 @@
             <th><%= r.tests %></th>
             <th><%= r.todayCases %></th>
             <th><%= r.todayDeaths %></th>
+            <% var d = new Date(Date.now());
+               var date_string= d.toLocaleString('en-GB')%>
+            <th><%= date_string  %></th>
 
         </tr>
 
